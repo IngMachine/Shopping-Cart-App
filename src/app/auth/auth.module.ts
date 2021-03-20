@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 // Custom modules
-import { NgzorroModule } from '../ngzorro/ngzorro.module';
+import { NgZorroModule } from '../ngzorro/ngzorro.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    NgzorroModule
+    NgZorroModule
   ]
 })
 export class AuthModule { }

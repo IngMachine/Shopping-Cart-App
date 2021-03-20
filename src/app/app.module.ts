@@ -15,7 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
-import { NgzorroModule } from './ngzorro/ngzorro.module';
+
+// Módulo de los componentes de NgZorro
+import { NgZorroModule } from './ngzorro/ngzorro.module';
 
 registerLocaleData(en);
 
@@ -29,7 +31,7 @@ registerLocaleData(en);
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgzorroModule
+    NgZorroModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

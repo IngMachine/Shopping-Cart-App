@@ -13,17 +13,22 @@ const routes: Routes = [
     children: [
       // Modulos de producto.
       {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
-        path: 'carts',
-        loadChildren: () => import('../carts/carts.module').then( m => m.CartsModule )
-        // TODO: Guards
+        path: ' ',
+        component: HomeComponent,
+        children: [
+          {
+            path: 'carts',
+            loadChildren: () => import('../carts/carts.module').then( m => m.CartsModule )
+          },
+          {
+            path: '**',
+            redirectTo: 'carts'
+          }
+        ]
       },
       {
         path: '**',
-        redirectTo: 'home'
+        redirectTo: ' '
       }
     ]
   }
