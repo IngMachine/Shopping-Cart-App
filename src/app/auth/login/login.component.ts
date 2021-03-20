@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class AppComponent implements OnInit{
-
-  isCollapsed = false;
-  loading = true;
+export class LoginComponent implements OnInit {
 
   validateForm!: FormGroup;
 
@@ -21,7 +18,7 @@ export class AppComponent implements OnInit{
     }
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -31,7 +28,4 @@ export class AppComponent implements OnInit{
     });
   }
 
-  toggleCollapsed(): void {
-    this.isCollapsed = !this.isCollapsed;
-  }
 }
