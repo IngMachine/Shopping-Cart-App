@@ -9,6 +9,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzResultModule } from 'ng-zorro-antd/result';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
 
@@ -23,6 +24,7 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzListModule,
     NzLayoutModule,
     NzMenuModule,
+    NzResultModule,
     NzToolTipModule,
     NzSpaceModule
   ]

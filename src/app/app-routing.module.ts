@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NonFoundComponent } from './home/pages/non-found/non-found.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    component: NonFoundComponent
   }
 ];
 
