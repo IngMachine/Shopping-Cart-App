@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from './auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnInit{
 
-  constructor() {}
+  constructor(
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.authService.initAuthListener();
   }
 }
