@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 // Custom modules
-import { NgZorroModule } from '../ngzorro/ngzorro.module';
+import { NgZorroModule } from '../ngZorro/ngzorro.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // Angular Fire Auth

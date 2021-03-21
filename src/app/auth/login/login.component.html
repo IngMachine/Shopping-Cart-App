@@ -1,26 +1,42 @@
-<div nz-row>
-    <div nz-col nzSpan="12" nzOffset="6">
-        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-            <nz-form-item>
-                <nz-form-control nzErrorTip="Please input your email!">
-                    <nz-input-group nzPrefixIcon="mail">
-                        <input type="text" nz-input formControlName="email" placeholder="Email" />
-                    </nz-input-group>
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-control nzErrorTip="Please input your Password!">
-                    <nz-input-group nzPrefixIcon="lock">
-                        <input type="password" nz-input formControlName="password" placeholder="Password" />
-                    </nz-input-group>
-                </nz-form-control>
-            </nz-form-item>
-            <button [disabled]="validateForm.invalid"
-                    nz-button class="login-form-button
-                    login-form-margin"
-                    [nzType]="'primary'">
-                    Log in
-            </button> Or <a routerLink="/auth/register"> register now! </a>
-        </form>
+<div class="conainter-form">
+  <div class="form">
+
+    <div class="logo-form">
+      <img src="https://firebasestorage.googleapis.com/v0/b/shopping-cart-fba9a.appspot.com/o/tul.png?alt=media&token=8094a50a-6cd8-4544-ae8f-e45401f00f4e"
+          class="imgLogo" alt="" >
     </div>
+
+    <div class="login-form">
+
+      <form nz-form [formGroup]="validateForm"  (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your email!">
+                <nz-input-group nzPrefixIcon="mail">
+                    <input type="text" nz-input formControlName="email" placeholder="Email" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please input your Password!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Password" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <button [disabled]="validateForm.invalid"
+                nz-button class="login-form-button login-form-margin"
+                [nzType]="'primary'">Log in</button>
+
+        <div nz-row >
+            <div nz-col [nzSpan]="24">
+                <a routerLink="/auth/register" class="login-form-forgot">register now!</a>
+            </div>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
 </div>
+

@@ -1,7 +1,56 @@
-[nz-form] {
-  max-width: 600px;
+.login-form {
+  max-width: 100% !important;
+  padding: 20px;
+  }
+
+  .login-form-margin {
+    margin-bottom: 16px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+
+
+.conainter-form {
+background: #ECECEC;
+height: 100%;
+width: 100%;
+
+/*IMPORTANTE*/
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
-button {
-  margin-left: 8px;
+.form {
+background: white;
+width: 30%;
+border-radius: 5px;
+}
+
+.imgLogo {
+width:50px;
+height:50px;
+border-radius:150px;
+border:2px solid #666;
+margin-top: 20px;
+}
+
+.logo-form{
+max-width: 100%;
+text-align: center;
+}
+
+
+@media (max-width: 1000px) {
+.form {
+background: white;
+width: 60%;
+border-radius: 5px;
+}
 }

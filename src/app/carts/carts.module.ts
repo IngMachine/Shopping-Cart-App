@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CartsRoutingModule } from './carts-routing.module';
 
 // Módulo de los componetes de NgZorro
-import { NgZorroModule } from '../ngzorro/ngzorro.module';
+import { NgZorroModule } from '../ngZorro/ngzorro.module';
 
 // Components
 import { CurrentCartComponent } from './pages/current-cart/current-cart.component';

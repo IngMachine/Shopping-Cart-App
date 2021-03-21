@@ -22,7 +22,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 
 // Módulo de los componentes de NgZorro
-import { NgZorroModule } from './ngzorro/ngzorro.module';
+import { NgZorroModule } from './ngZorro/ngzorro.module';
 
 // Módulos personalizados
 import { AuthModule } from './auth/auth.module';
