@@ -2,9 +2,9 @@
     <div nz-col nzSpan="12" nzOffset="6">
         <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
             <nz-form-item>
-                <nz-form-control nzErrorTip="Please input your username!">
-                    <nz-input-group nzPrefixIcon="user">
-                        <input type="text" nz-input formControlName="userName" placeholder="Username" />
+                <nz-form-control nzErrorTip="Please input your email!">
+                    <nz-input-group nzPrefixIcon="mail">
+                        <input type="text" nz-input formControlName="email" placeholder="Email" />
                     </nz-input-group>
                 </nz-form-control>
             </nz-form-item>
@@ -20,7 +20,7 @@
                     <a class="login-form-forgot">Forgot password</a>
                 </div>
             </div>
-            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button> Or <a> register now! </a>
+            <button [disabled]="validateForm.invalid" nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button> Or <a> register now! </a>
         </form>
     </div>
 </div>

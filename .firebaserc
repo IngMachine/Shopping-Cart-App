@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "shopping-cart-app-64542": {
+      "hosting": {
+        "shoppingCartApp": [
+          "shopping-cart-app-64542"
+        ]
+      }
+    }
+  }
+}

@@ -1,20 +1,20 @@
-<nz-layout>
+<nz-layout nzBreakpoint="xs">
     <nz-space nzDirection="vertical">
-      <nz-space-item>
-        <app-header></app-header>
-    </nz-space-item>
-  <nz-space-item>
-      <nz-content class="outer-content">  
-        <nz-layout class="inner-layout">
-          <nz-sider nzWidth="200px" nzTheme="light">
-            <app-sider></app-sider>
-          </nz-sider>
-          <nz-content class="inner-content">
-            <router-outlet></router-outlet>
-          </nz-content>
-        </nz-layout>
-        <app-footer></app-footer>
-      </nz-content>
-    </nz-space-item>
+        <nz-space-item>
+            <app-header></app-header>
+        </nz-space-item>
+        <nz-space-item>
+            <nz-content class="outer-content">
+                <nz-layout class="inner-layout">
+                    <nz-sider nzWidth="200px" nzTheme="light">
+                        <app-sider></app-sider>
+                    </nz-sider>
+                    <nz-content class="inner-content">
+                        <router-outlet></router-outlet>
+                    </nz-content>
+                </nz-layout>
+                <app-footer></app-footer>
+            </nz-content>
+        </nz-space-item>
     </nz-space>
 </nz-layout>

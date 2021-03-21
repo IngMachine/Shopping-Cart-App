@@ -12,12 +12,17 @@ import { RegisterComponent } from './register/register.component';
 import { NgZorroModule } from '../ngzorro/ngzorro.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
+// Angular Fire Auth
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
+    AuthRoutingModule,
     NgZorroModule
   ]
 })

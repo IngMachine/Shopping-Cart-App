@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       // Modulos de producto.
       {
-        path: ' ',
+        path: '',
         component: HomeComponent,
         children: [
           {
@@ -32,7 +32,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: ' '
+        redirectTo: ''
       }
     ]
   }
