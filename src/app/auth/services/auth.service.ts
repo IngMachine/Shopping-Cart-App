@@ -5,6 +5,8 @@ import firebase from 'firebase';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User } from '../models/user.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class AuthService {
 
   constructor(
     private afAuth: AngularFireAuth,
+    private afDB: AngularFirestore,
     private router: Router
   ) { }
 
@@ -28,8 +31,20 @@ export class AuthService {
   createUser(firstName: string, lastName: string, email: string, password: string): void {
     this.afAuth.createUserWithEmailAndPassword( email, password)
                .then( resp => {
-                 console.log( `resp de firabase cuando creo un usuario correctamente: `, resp );
-                 this.router.navigate(['/', 'home']);
+                  //  console.log( `resp de firabase cuando creo un usuario correctamente: `, resp );
+                  const user: User = {
+                    uid: resp.user.uid,
+                    firstName,
+                    lastName,
+                    email
+                  };
+
+                  this.afDB.doc(`usuarios/${ user.uid }/usuario/${ user.uid }`)
+                           .set( user )
+                           .then( () => {
+                             this.router.navigate(['/', 'home']);
+                           });
+                          // TODO catch mostrar el error por que no se mostro.
                 })
                .catch( err => {
                  console.log( err );
