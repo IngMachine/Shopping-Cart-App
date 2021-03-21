@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-/* 
+/*
   {
     path: 'home',
     component: HomeComponent
@@ -21,8 +21,12 @@ const routes: Routes = [
             loadChildren: () => import('../carts/carts.module').then( m => m.CartsModule )
           },
           {
+            path: 'products',
+            loadChildren: () => import('../products/products.module').then( m => m.ProductsModule )
+          },
+          {
             path: '**',
-            redirectTo: 'carts'
+            redirectTo: 'products'
           }
         ]
       },

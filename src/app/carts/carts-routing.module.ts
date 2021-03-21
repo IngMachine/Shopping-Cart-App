@@ -9,12 +9,16 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: '',
+        path: 'current',
         component: CurrentCartComponent
       },
       {
         path: 'all',
         component: CartsComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'all'
       }
 
     ]
