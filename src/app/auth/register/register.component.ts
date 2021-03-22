@@ -1,20 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { RequiredFields } from '../interfaces/required-fields.interface';
 import { AuthService } from '../services/auth.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducers';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   validateForm!: FormGroup;
+  loading: boolean;
+  subscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +30,12 @@ export class RegisterComponent implements OnInit {
       email: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
+    this.subscription = this.store.select('ui')
+                                  .subscribe( ui => this.loading = ui.isLoading );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   submitForm(): void {

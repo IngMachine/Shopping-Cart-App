@@ -25,8 +25,18 @@
         </nz-form-item>
 
         <button [disabled]="validateForm.invalid"
+                *ngIf="!loading"
                 nz-button class="login-form-button login-form-margin"
-                [nzType]="'primary'">Log in</button>
+                [nzType]="'primary'">
+                Log in
+        </button>
+        <button disabled
+                *ngIf="loading"
+                nzLoading 
+                nz-button class="login-form-button login-form-margin"
+                [nzType]="'primary'">
+                Please wait
+        </button>
 
         <div nz-row >
             <div nz-col [nzSpan]="24">

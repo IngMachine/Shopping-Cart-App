@@ -20,8 +20,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    AngularFireAuthModule,
     ReactiveFormsModule,
+    AngularFireAuthModule,
     AuthRoutingModule,
     NgZorroModule
   ]
