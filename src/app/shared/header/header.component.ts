@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/services/auth.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducers';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +10,19 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  isAuth: boolean;
+
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
+    this.store.select('auth')
+              .subscribe( auth => {
+                this.isAuth = auth.isAuthenticated;
+                console.log(this.isAuth);
+              } );
   }
 
   logout(): void{

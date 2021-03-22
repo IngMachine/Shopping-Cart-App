@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -11,27 +11,42 @@ import firebase from 'firebase';
 
 import Swal from 'sweetalert2';
 
-import { User } from '../models/user.model';
+import { User, DataObj } from '../models/user.model';
 import { ActivateLoadingAction, DisableLoadingAction } from '../../store/actions/ui.actions';
+import { AppState } from 'src/app/store/app.reducers';
+import { SetUser } from 'src/app/store/actions/auth.actions';
+import { UnsetUser } from '../../store/actions/auth.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private userSusbcription: Subscription;
+
   constructor(
     private afAuth: AngularFireAuth,
     private afDB: AngularFirestore,
     private router: Router,
-    private store: Store
+    private store: Store<AppState>
   ) { }
 
   // Escuchar informacion de usuario activo de firabase.
   initAuthListener(): void {
+    // fbUser => es la informacion del usuario recibida por Firabase.
     this.afAuth.authState
-                // fbUser => es la informacion del usuario recibida por Firabase.
                .subscribe( (fbUser: firebase.User) => {
-                 console.log( fbUser );
+                 if ( fbUser ){
+                   this.userSusbcription = this.afDB.doc(`usuarios/${ fbUser.uid }/usuario/${ fbUser.uid }`)
+                                                    .valueChanges()
+                                                    .subscribe( (userObj: DataObj) => {
+                                                       const newUser = new User( userObj );
+                                                       this.store.dispatch( new SetUser( newUser ));
+                                                       console.log( newUser );
+                                                     });
+                 } else {
+                   this.userSusbcription?.unsubscribe();
+                 }
                });
   }
 
@@ -53,7 +68,6 @@ export class AuthService {
                              this.store.dispatch( new DisableLoadingAction() );
                              this.router.navigate(['/', 'home']);
                            });
-                          // TODO catch mostrar el error por que no se mostro.
                 })
                .catch( err => {
                 //  console.log( err );
@@ -80,6 +94,7 @@ export class AuthService {
   logout(): void {
     this.router.navigate(['/auth']);
     this.afAuth.signOut();
+    this.store.dispatch( new UnsetUser() );
   }
 
   isAuth(): Observable<boolean>{

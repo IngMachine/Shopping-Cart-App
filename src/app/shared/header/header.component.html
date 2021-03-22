@@ -3,48 +3,19 @@
         <img src="" alt="">
     </div>
     <ul nz-menu nzMode="horizontal" nzTheme="dark">
-        <li nz-menu-item nzSelected>
-            <i nz-icon nzType="mail"></i> Navigation One
+        <li nz-menu-item nzSelected routerLink="/home/products"  style="margin-right: 10px;">
+            <i nz-icon nzType="appstore-add"></i> Products
         </li>
-        <li nz-menu-item nzDisabled>
-            <i nz-icon nzType="appstore"></i> Navigation Two
+        <li nz-menu-item routerLink="/home/carts">
+            <i nz-icon nzType="appstore-add"></i> Cart
         </li>
-        <li nz-submenu nzTitle="Navigation Three - Submenu" nzIcon="setting">
-            <ul>
-                <li nz-menu-group nzTitle="Item 1">
-                    <ul>
-                        <li nz-menu-item>Option 1</li>
-                        <li nz-menu-item>Option 2</li>
-                    </ul>
-                </li>
-                <li nz-menu-group nzTitle="Item 2">
-                    <ul>
-                        <li nz-menu-item>Option 3</li>
-                        <li nz-menu-item>Option 4</li>
-                        <li nz-submenu nzTitle="Sub Menu">
-                            <ul>
-                                <li nz-menu-item nzDisabled>Option 5</li>
-                                <li nz-menu-item>Option 6</li>
-                            </ul>
-                        </li>
-                        <li nz-submenu nzDisabled nzTitle="Disabled Sub Menu">
-                            <ul>
-                                <li nz-menu-item>Option 5</li>
-                                <li nz-menu-item>Option 6</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+        <li *ngIf="isAuth" nz-menu-item routerLink="/home/carts">
+            <i nz-icon nzType="appstore-add"></i> Orders
         </li>
-        <li nz-menu-item>
-            <a target="_blank" rel="noopener noreferrer">Navigation Four - Link</a>
-        </li>
-        <li nz-menu-item>
-            <button (click)="logout()" nz-button nzType="primary" nzSize='large' nzShape="circle">
-                <i nz-icon nzType="logout" nzTheme="outline"></i>
-            </button>
-        </li>
+        <!-- No estoy autenticado -->
+        <nz-avatar *ngIf="!isAuth" style="background-color:#87d068; float: right; margin-top: 15px; cursor: pointer;" [nzShape]="'square'" [nzSize]="'large'" [nzIcon]="'login'" routerLink="/auth" ></nz-avatar>
+        <!-- Estoy autenticado -->
+        <nz-avatar *ngIf="isAuth"  style="background-color: red; float: right; margin-top: 15px; cursor: pointer;" [nzShape]="'square'" [nzSize]="'large'" [nzIcon]="'logout'" (click)="logout()" ></nz-avatar>
     </ul>
 </nz-header>
 
