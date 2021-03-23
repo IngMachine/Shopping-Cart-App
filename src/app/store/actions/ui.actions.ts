@@ -12,5 +12,5 @@ export class DisableLoadingAction implements Action {
     readonly type = DISABLE_LOADING;
 }
 
-export type actions = ActivateLoadingAction |
+export type uiActions = ActivateLoadingAction |
                       DisableLoadingAction;

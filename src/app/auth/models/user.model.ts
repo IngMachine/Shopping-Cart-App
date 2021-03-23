@@ -4,7 +4,7 @@ export class User {
     public email: string;
     public uid: string;
 
-    constructor( obj: DataObj) {
+    constructor( obj: DataObj ) {
         this.firstName = obj && obj.firstName;
         this.lastName = obj && obj.lastName;
         this.email = obj && obj.email;

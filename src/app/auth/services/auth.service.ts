@@ -23,6 +23,7 @@ import { UnsetUser } from '../../store/actions/auth.actions';
 export class AuthService {
 
   private userSusbcription: Subscription;
+  private user: User;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -43,8 +44,10 @@ export class AuthService {
                                                        const newUser = new User( userObj );
                                                        this.store.dispatch( new SetUser( newUser ));
                                                        console.log( newUser );
+                                                       this.user = newUser;
                                                      });
                  } else {
+                   this.user = null;
                    this.userSusbcription?.unsubscribe();
                  }
                });
@@ -107,5 +110,9 @@ export class AuthService {
                           return fbUser != null;
                         })
                       );
+  }
+
+  getUser(): User {
+    return { ...this.user };
   }
 }

@@ -1,4 +1,4 @@
-import * as fromUI from '../actions/ui.actions';
+import * as fromUI from '../actions';
 
 export interface UIState {
     isLoading: boolean;
@@ -10,7 +10,7 @@ const initialState: UIState = {
 };
 
 
-export function UIReducer( state = initialState, action: fromUI.actions): UIState {
+export function UIReducer( state = initialState, action: fromUI.uiActions): UIState {
     switch ( action.type ) {
         case fromUI.ACTIVATE_LOADING:
             return {

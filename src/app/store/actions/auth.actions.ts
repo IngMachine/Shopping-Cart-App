@@ -7,12 +7,13 @@ export const UNSET_USER = '[AUTH] Unset User';
 export class SetUser implements Action {
     readonly type = SET_USER;
 
-    constructor( public user: User ){}
+    constructor( public user: User){}
 }
 
 export class UnsetUser implements Action {
     readonly type = UNSET_USER;
+    constructor( public isProducto?: boolean) {}
 }
 
-export type actions = SetUser |
-                      UnsetUser;
+export type authActions = SetUser |
+                          UnsetUser;

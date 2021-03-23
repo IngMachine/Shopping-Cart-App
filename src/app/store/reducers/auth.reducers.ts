@@ -1,4 +1,4 @@
-import * as fromAuth from '../actions/auth.actions';
+import * as fromAuth from '../actions';
 import { User } from '../../auth/models/user.model';
 
 export interface AuthState {
@@ -11,17 +11,17 @@ const initialState: AuthState = {
     isAuthenticated: false
 };
 
-export function authReducer( state = initialState, action: fromAuth.actions ): AuthState {
+export function authReducer( state = initialState, action: fromAuth.authActions ): AuthState {
     switch ( action.type ) {
         case fromAuth.SET_USER:
             return {
                 user: { ... action.user },
-                isAuthenticated: true
+                isAuthenticated: true,
             };
         case fromAuth.UNSET_USER:
             return {
                 user: null,
-                isAuthenticated: false
+                isAuthenticated: false,
             };
         default:
             return state;
