@@ -4,7 +4,7 @@ import { AppState } from 'src/app/store/app.reducers';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, filter } from 'rxjs/operators';
 import { Product } from '../models/product';
-import { SetProductsAction } from '../../store/actions/products.action';
+import { SetProductsAction } from '../../store/actions/products.actions';
 import { Subscription } from 'rxjs';
 
 @Injectable({

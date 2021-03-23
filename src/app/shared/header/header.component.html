@@ -3,13 +3,13 @@
         <img src="" alt="">
     </div>
     <ul nz-menu nzMode="horizontal" nzTheme="dark">
-        <li nz-menu-item nzSelected routerLink="/home/products" routerLinkActive="active"  style="margin-right: 10px;">
+        <li nz-menu-item nzSelected routerLink="/home/products" style="margin-right: 10px;">
             <i nz-icon nzType="appstore-add"></i> Products
         </li>
-        <li nz-menu-item routerLink="/home/carts"  >
+        <li nz-menu-item routerLink="/home/carts/current"  >
             <i nz-icon nzType="shopping-cart"></i> Cart
         </li>
-        <li *ngIf="isAuth" nz-menu-item routerLink="/home/carts" routerLinkActive="active">
+        <li *ngIf="isAuth" nz-menu-item routerLink="/home/carts/all">
             <!-- <i nz-icon nzType="appstore-add"></i> Orders -->
             <i nz-icon nzType="unordered-list" nzTheme="outline"></i> Orders
         </li>

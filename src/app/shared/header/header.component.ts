@@ -11,7 +11,6 @@ import { AppState } from 'src/app/store/app.reducers';
 export class HeaderComponent implements OnInit {
 
   isAuth: boolean;
-  activo: boolean = false;
 
   constructor(
     private authService: AuthService,
@@ -24,10 +23,6 @@ export class HeaderComponent implements OnInit {
                 this.isAuth = auth.isAuthenticated;
                 console.log(this.isAuth);
               } );
-  }
-
-  getActivo(): boolean {
-    return this.activo = true;
   }
 
   logout(): void{

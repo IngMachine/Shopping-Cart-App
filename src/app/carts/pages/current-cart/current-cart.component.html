@@ -1,1 +1,24 @@
-<app-cart *ngFor="let item of [1,2,3]"></app-cart>
+
+    <nz-list nzItemLayout="vertical">
+      <nz-list-item *ngFor="let item of currentCart">
+        <nz-list-item-meta>
+          <!-- <nz-list-item-meta-avatar [nzSrc]="item.image"> </nz-list-item-meta-avatar> -->
+          <nz-list-item-meta-title>
+            <a>{{ item.name }}</a>
+          </nz-list-item-meta-title>
+          <!-- <nz-list-item-meta-description>
+            {{ item.description }}
+          </nz-list-item-meta-description> -->
+        </nz-list-item-meta>
+        <!-- {{ item.content }}
+        <ul nz-list-item-actions>
+          <nz-list-item-action><i nz-icon nzType="star-o" style="margin-right: 8px;"></i> 156</nz-list-item-action>
+          <nz-list-item-action><i nz-icon nzType="star-o" style="margin-right: 8px;"></i> 156</nz-list-item-action>
+          <nz-list-item-action><i nz-icon nzType="star-o" style="margin-right: 8px;"></i> 2</nz-list-item-action>
+        </ul>
+        <nz-list-item-extra>
+          <img width="272" alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />
+        </nz-list-item-extra> -->
+      </nz-list-item>
+    </nz-list>
+  
