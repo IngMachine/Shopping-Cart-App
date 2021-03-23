@@ -7,11 +7,18 @@
             </nz-list-item-meta-title>
             <nz-list-item-meta-description>
                 {{ item.description }}
+                <br>
+                {{ item.price | currency }}
             </nz-list-item-meta-description>
         </nz-list-item-meta>
 
         <ul nz-list-item-actions>
-            <nz-list-item-action><i nz-icon nzType="star-o" style="margin-right: 8px;" (click)="eliminar(item)"></i> Delete {{item.price |currency}}</nz-list-item-action>
+            <nz-list-item-action>
+                <div  style="margin: 10px !important;">
+                    <button nz-button nzType="primary" [nzSize]="size" nzShape="circle"><i nz-icon nzType="close" (click)="eliminar(item)" ></i></button>
+                </div>
+            </nz-list-item-action>
+            <!-- <nz-list-item-action><i nz-icon nzType="star-o" style="margin-right: 8px;" (click)="eliminar(item)"></i> Delete {{item.price |currency}}</nz-list-item-action> -->
         </ul>
     </nz-list-item>
 </nz-list>
