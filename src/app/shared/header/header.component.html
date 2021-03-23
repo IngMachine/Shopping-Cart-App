@@ -3,14 +3,15 @@
         <img src="" alt="">
     </div>
     <ul nz-menu nzMode="horizontal" nzTheme="dark">
-        <li nz-menu-item nzSelected routerLink="/home/products"  style="margin-right: 10px;">
+        <li nz-menu-item nzSelected routerLink="/home/products" routerLinkActive="active"  style="margin-right: 10px;">
             <i nz-icon nzType="appstore-add"></i> Products
         </li>
-        <li nz-menu-item routerLink="/home/carts">
-            <i nz-icon nzType="appstore-add"></i> Cart
+        <li nz-menu-item routerLink="/home/carts"  >
+            <i nz-icon nzType="shopping-cart"></i> Cart
         </li>
-        <li *ngIf="isAuth" nz-menu-item routerLink="/home/carts">
-            <i nz-icon nzType="appstore-add"></i> Orders
+        <li *ngIf="isAuth" nz-menu-item routerLink="/home/carts" routerLinkActive="active">
+            <!-- <i nz-icon nzType="appstore-add"></i> Orders -->
+            <i nz-icon nzType="unordered-list" nzTheme="outline"></i> Orders
         </li>
         <!-- No estoy autenticado -->
         <nz-avatar *ngIf="!isAuth" style="background-color:#87d068; float: right; margin-top: 15px; cursor: pointer;" [nzShape]="'square'" [nzSize]="'large'" [nzIcon]="'login'" routerLink="/auth" ></nz-avatar>

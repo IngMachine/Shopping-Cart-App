@@ -13,4 +13,4 @@ export class DisableLoadingAction implements Action {
 }
 
 export type uiActions = ActivateLoadingAction |
-                      DisableLoadingAction;
+                        DisableLoadingAction;

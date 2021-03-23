@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/app.reducers';
+import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products-all',
@@ -9,25 +11,27 @@ import { ProductsService } from '../../services/products.service';
   styleUrls: ['./products-all.component.scss']
 })
 export class ProductsAllComponent implements OnInit, OnDestroy {
-  obj1: any = {
-    title: 'Fredy sirve',
-  };
-  obj2: any = {
-    title: 'Fredy  no sirve',
-  };
 
-  datos: any[] = [this.obj1, this.obj2, this.obj1, this.obj1];
+  subscriptionProducts: Subscription = new Subscription();
+
+  datos: Product[];
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
     this.productsService.productsItems();
+    this.subscriptionProducts = this.store.select('product')
+                                          .subscribe( items => {
+                                            this.datos = items.products;
+                                          })
   }
 
   ngOnDestroy(): void {
     this.productsService.cancelSubscription();
+    this.subscriptionProducts.unsubscribe();
   }
 
 }
