@@ -19,12 +19,7 @@ export class ProductsService {
     private afDB: AngularFirestore
   ) { }
 
-  initProductListener() {
-    this.store.select('product')
-              .subscribe( () => this.productsItems());
-  }
-
-  private productsItems(): void {
+   productsItems(): void {
     // docData es la data en forma de array devuelta por firebase.
     /*
       SnapchotChanges me sirve para tener los id y poder eliminarlo
@@ -47,7 +42,7 @@ export class ProductsService {
             //  Deberia de ser tipo Product[] pero angular no puede identificar que le envia firbase.
              .subscribe( (collectionProducts: any[]) => {
                console.log(collectionProducts);
-              //  this.store.dispatch( new SetProductsAction( collectionProducts ));
+               this.store.dispatch( new SetProductsAction( collectionProducts ));
              });
   }
 

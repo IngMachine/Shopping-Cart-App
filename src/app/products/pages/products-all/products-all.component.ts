@@ -23,7 +23,7 @@ export class ProductsAllComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.productsService.initProductListener();
+    this.productsService.productsItems();
   }
 
   ngOnDestroy(): void {
