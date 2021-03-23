@@ -3,6 +3,7 @@ import { CartsService } from '../../services/carts.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/app.reducers';
 import { Product } from '../../../products/models/product';
+import Swal from 'sweetalert2';
 
 interface ItemData {
   href: string;
@@ -30,5 +31,12 @@ export class CurrentCartComponent implements OnInit {
     private cartsService: CartsService,
     public store: Store<AppState>
   ) {}
+
+  eliminar(product: Product): void {
+    this.cartsService.borrarProductCart( product.idCart )
+    .then( () => {
+      Swal.fire('Elemento eliminado', product.name , 'warning');
+    });
+  }
 
 }

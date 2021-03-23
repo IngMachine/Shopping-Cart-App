@@ -32,6 +32,7 @@ export class ProductsService {
               //  Tranformar el flujo que viene por el snapshotChange
               map( docData => {
                 return docData.map( doc => {
+                  console.log(doc);
                   return {
                     id: doc.payload.doc.id,
                     ...doc.payload.doc.data() as {}

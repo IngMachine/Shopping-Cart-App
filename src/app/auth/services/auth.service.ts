@@ -16,6 +16,7 @@ import { ActivateLoadingAction, DisableLoadingAction } from '../../store/actions
 import { AppState } from 'src/app/store/app.reducers';
 import { SetUser } from 'src/app/store/actions/auth.actions';
 import { UnsetUser } from '../../store/actions/auth.actions';
+import { DeselectAllProductCart } from '../../store/actions/cart.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -95,9 +96,12 @@ export class AuthService {
   }
 
   logout(): void {
+    this.user = this.getUser();
     this.router.navigate(['/auth']);
     this.afAuth.signOut();
     this.store.dispatch( new UnsetUser() );
+    this.store.dispatch( new DeselectAllProductCart() );
+    // this.afDB.doc(`usuarios/${this.user.uid}/carritos/`).delete();
   }
 
   isAuth(): Observable<boolean>{

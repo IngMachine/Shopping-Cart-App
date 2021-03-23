@@ -5,6 +5,7 @@ export class Product {
     public name: string;
     public price: number;
     public sku: string;
+    public idCart?: string;
 
     constructor( obj: DataObjProduct) {
         this.description = obj && obj.description;
@@ -12,6 +13,7 @@ export class Product {
         this.name = obj && obj.name;
         this.price = obj && obj.price;
         this.sku = obj && obj.sku;
+        this.idCart = obj && obj.idCart;
     }
 
 }
@@ -22,4 +24,5 @@ export interface DataObjProduct {
     name: string;
     price: number;
     sku: string;
+    idCart?: string;
 }

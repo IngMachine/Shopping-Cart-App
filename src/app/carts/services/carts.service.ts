@@ -17,7 +17,6 @@ export class CartsService {
   cartsListernetSubcription: Subscription = new Subscription();
   cartsItemsSubscription: Subscription = new Subscription();
 
-  products: Product[] = [];
 
   constructor(
     private authService: AuthService,
@@ -43,13 +42,14 @@ export class CartsService {
                                                       return docData.map( doc => {
                                                         console.log(doc);
                                                         return {
-                                                          id: doc.payload.doc.id,
+                                                          idCart: doc.payload.doc.id,
                                                           ...doc.payload.doc.data() as {}
                                                         };
                                                       });
                                                     })
                                                     )
                                                     .subscribe( (coleccion: any[])  => {
+                                                      console.log(coleccion);
                                                       this.store.dispatch( new SelectAllProductCart( coleccion ) );
                                                     });
   }
@@ -62,12 +62,15 @@ export class CartsService {
 
 
   addProductCart(product: Product): void {
-    this.products = [... this.products, product ];
     const user: User = this.authService.getUser();
-
     this.afDB.doc(`usuarios/${user.uid}/`)
-             .collection('carritos').add({... this.products});
+             .collection('carritos').add({...product});
 
-    this.store.dispatch( new SelectAllProductCart(this.products) );
+  }
+
+  borrarProductCart( uidCart: string ): Promise < void > {
+    const user = this.authService.getUser();
+    return this.afDB.doc(`usuarios/${ user.uid }/carritos/${ uidCart }`)
+               .delete();
   }
 }
